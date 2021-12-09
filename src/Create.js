@@ -1,8 +1,8 @@
 //! Input form
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import AbortController from "abort-controller";
-import AutoID from "./AutoID";
+
 // import useFetch from "../useFetch";
 // import DataList from "./DataList";
 
@@ -69,17 +69,10 @@ const Create = () => {
     <div className="create">
       <h2>Add New Client</h2>
       <form onSubmit={handleSubmit}>
+        {/* //? Auto Generate ID */}
         <label> ProductId:</label>
         <button onClick={() => AutoID()}>Random ID</button>
         <p>{randomID}</p>
-
-        {/* <input
-          type="text"
-          required
-          placeholder={AutoID()}
-          value={productId}
-          onChange={(e) => setProductId(e.target.value)}
-        /> */}
 
         <label>Name:</label>
         <input
