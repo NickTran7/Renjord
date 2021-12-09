@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Create from "./Create";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DataDetail from "./DataTable";
+import Home from "./Home";
 
 import Datas from "./Datas";
 
@@ -17,7 +18,9 @@ function App() {
         <Navbar />
         <div className="content">
           <Switch>
-            <Route exact path="/"></Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
             {/* //? Link file to Function */}
 
             <Route path="/create">

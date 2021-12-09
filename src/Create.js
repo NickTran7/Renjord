@@ -1,5 +1,5 @@
 //! Input form
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AbortController from "abort-controller";
 import AutoID from "./AutoID";
@@ -13,7 +13,22 @@ const Create = () => {
   const [phone, setPhone] = useState("");
   const [chainType, setChain] = useState("necklace");
   const [isPending, setIsPending] = useState(false);
+  const [randomID, setRandomID] = useState("");
   const history = useHistory();
+
+  //?Auto generate random ID
+  const AutoID = () => {
+    let result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < 15; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    console.log(result);
+    setProductId(result);
+    setRandomID(result);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,14 +71,15 @@ const Create = () => {
       <form onSubmit={handleSubmit}>
         <label> ProductId:</label>
         <button onClick={() => AutoID()}>Random ID</button>
-        {/* {AutoID()} */}
-        <input
+        <p>{randomID}</p>
+
+        {/* <input
           type="text"
           required
           placeholder={AutoID()}
           value={productId}
           onChange={(e) => setProductId(e.target.value)}
-        />
+        /> */}
 
         <label>Name:</label>
         <input
