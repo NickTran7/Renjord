@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/alt-text */
-
 //? Note : don't put headers, its already declared by Lambda
 import Datalist from "./DataList";
 
@@ -12,7 +11,6 @@ const DataDetail = () => {
   const { id } = useParams();
   const history = useHistory();
   const [linkPhoto, setLinkPhoto] = useState("");
-
   const [filename, selectFilename] = useState(null);
 
   //? WHAT IS THIS URL??????????????????
@@ -20,7 +18,9 @@ const DataDetail = () => {
     "https://basi4ylpi7.execute-api.us-east-2.amazonaws.com/prod/product?productId=" +
       id
   );
-
+  if (data === null) {
+  }
+  console.log("id: " + id);
   console.log(data);
   console.log(typeof data);
   //? Get name of the file update (catphoto.jpeg)
@@ -28,29 +28,8 @@ const DataDetail = () => {
     selectFilename(e.target.files[0]); //?save img.jpeg to useState
   };
 
-  //? Click Delete
-  //* Always make it to Json ( JSON.Stringtify)
-  const deleteClick = (num) => {
-    const x = { productId: num };
-    const zdata = JSON.stringify(x);
-    const requestData = {
-      method: "DELETE",
-      body: zdata,
-    };
-    fetch(
-      "https://basi4ylpi7.execute-api.us-east-2.amazonaws.com/prod/product",
-      requestData
-    )
-      .then((response) => {
-        history.push("/datas");
-        console.log("Fisnished Delele file: " + response);
-      })
-      // .then(history.push("/datas"))
-      .catch((err) => console.log(err));
-  };
-
   //? Edit Info Click
-  const editClick = () => {};
+
   //?  Upload (file)= get filename from input
   const uploadClick = (file) => {
     const requestOptions = {
@@ -140,19 +119,6 @@ const DataDetail = () => {
             Upload
           </button>
 
-          {/* //? Delete Info Button */}
-          <button
-            type="button"
-            onClick={() => {
-              if (window.confirm("You are about to delete account: " + id)) {
-                deleteClick(id);
-              } else {
-                console.log("not delete");
-              }
-            }}
-          >
-            Delete (Disable For Now)
-          </button>
           {/* //? Change Info Button */}
 
           {/* //? Input photo Button */}

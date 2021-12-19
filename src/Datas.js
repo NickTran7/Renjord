@@ -1,7 +1,5 @@
 import useFetch from "./useFetch";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const Datas = () => {
   const { error, isPending, data } = useFetch(
@@ -12,22 +10,32 @@ const Datas = () => {
   //? data return is Javascript Object
 
   return (
-    <div className="home">
+    <div>
       {error && <div>{error}</div>}
       {isPending && <div>Loading...</div>}
       {data &&
         data.products.map((items) => (
-          <div className="data-table" key={items.productId}>
-            <Link to={`/datas/${items.productId}`}>
-              <p key={items.productId}>Product ID: {items.productId}</p>
-              <p key={items.photo}>
-                <b>Photo:</b> {items.photo}
-              </p>
-              <p key={items.chainType}>Chain Type:{items.chainType}</p>
-              <p key={items.email}>Email: {items.email}</p>
-              <p key={items.phone}>Phone: {items.phone}</p>
-            </Link>
-          </div>
+          <table key={items.productId}>
+            <thead>
+              <tr>
+                <th>ProductId</th>
+                <th>Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <Link to={`/datas/${items.productId}`}>
+                  <td key={items.productId}> {items.productId}</td>
+                  <td key={items.photo}>{items.photo}</td>
+
+                  <td key={items.email}>{items.email}</td>
+                  {/* <p key={items.phone}>Phone: {items.phone}</p> */}
+                  {/* <td key={items.chainType}>Chain Type:{items.chainType}</td> */}
+                </Link>
+              </tr>
+            </tbody>
+          </table>
         ))}
     </div>
   );

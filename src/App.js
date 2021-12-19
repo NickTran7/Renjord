@@ -1,12 +1,14 @@
 //! Link all Route to Function
 //TODO SET UP : Home - Create - DATA
-import Navbar from "./Navbar";
-import Create from "./Create";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DataDetail from "./DataTable";
 import Home from "./Home";
-
+import Navbar from "./Navbar";
+import Create from "./Create";
 import Datas from "./Datas";
+import NotFound from "./NotFound";
+import ClientPage from "./ClientPage";
 
 // import Create from "./components/Create";
 // import Home from "./components/Home";
@@ -33,6 +35,14 @@ function App() {
 
             <Route path="/datas">
               <Datas />
+            </Route>
+
+            <Route path="/client/:id">
+              <ClientPage />
+            </Route>
+
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </div>

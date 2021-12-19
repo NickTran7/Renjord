@@ -1,5 +1,5 @@
 //! Input form
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import AbortController from "abort-controller";
 
@@ -18,16 +18,20 @@ const Create = () => {
 
   //?Auto generate random ID
   const AutoID = () => {
-    let result = "";
-    var characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (var i = 0; i < 15; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    console.log(result);
-    setProductId(result);
-    setRandomID(result);
+    useEffect(() => {
+      let result = "";
+      var characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var charactersLength = characters.length;
+      for (var i = 0; i < 15; i++) {
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
+      }
+      console.log(result);
+      setProductId(result);
+      setRandomID(result);
+    }, []);
   };
 
   const handleSubmit = (e) => {
@@ -35,17 +39,15 @@ const Create = () => {
     const controller = new AbortController();
 
     let client = { productId, name, email, phone, chainType };
-
     setIsPending(true);
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+
     const raw = JSON.stringify(client);
     // console.log(typeof raw);
     // console.log(raw);
 
     const requestOptions = {
       method: "POST",
-      headers: myHeaders,
+
       body: raw,
       redirect: "follow",
     };
@@ -56,7 +58,7 @@ const Create = () => {
       .then(() => {
         setIsPending(false);
         controller.abort();
-        history.push("/datas");
+        history.push("/datas/" + productId);
       })
       .then((result) => {
         console.log(result);
@@ -71,7 +73,7 @@ const Create = () => {
       <form onSubmit={handleSubmit}>
         {/* //? Auto Generate ID */}
         <label> ProductId:</label>
-        <button onClick={() => AutoID()}>Random ID</button>
+        <p>{AutoID()}</p>
         <p>{randomID}</p>
 
         <label>Name:</label>
