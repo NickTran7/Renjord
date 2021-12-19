@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "home.css";
+@import "global.css";
+@import "client.css";
 
 /* base styles */
 * {
@@ -19,9 +23,8 @@ img {
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
   margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
+  /* border-bottom: 1px solid #f2f2f2; */
 }
 .navbar h1 {
   color: #f1356d;
@@ -33,12 +36,13 @@ img {
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
+  transition: all 0.2s linear;
 }
 .navbar a:hover {
   color: #f1356d;
 }
 .content {
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: 40px auto;
   padding: 20px;
 }
