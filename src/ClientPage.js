@@ -26,7 +26,7 @@ const ClientPage = () => {
 
   //?  Upload (file)= get filename from input
   return (
-    <div className="container w-50 text-center">
+    <div className="container ">
       {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
 
@@ -52,8 +52,7 @@ const ClientPage = () => {
             </div>
           )} */}
           <h3>Product: {data.productId}</h3>
-          <div className="row justify-content-between">
-            <div className="col"></div>
+          <div className="row row-cols-1 row-cols-md-4 justify-content-between align-items-center">
             <div className="col">
               <p>Email: {data.email}</p>
             </div>
@@ -63,7 +62,7 @@ const ClientPage = () => {
             <div className="col"></div>
           </div>
           <div>
-            <table className="table table-bordered">
+            <table className="table table-bordered table-responsive text-center">
               <thead>
                 <tr>
                   {ChainType.map((item, index) => (
@@ -76,67 +75,84 @@ const ClientPage = () => {
                   {ChainType.map((item, index) =>
                     data.chainType.toUpperCase() === item.toUpperCase() ? (
                       <td key={index}>
-                        <p>Yes</p>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="#f1356d"
+                          className="bi bi-check-circle-fill"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </svg>
                       </td>
                     ) : (
-                      <td></td>
+                      <td key={index}></td>
                     ),
                   )}
                 </tr>
               </tbody>
             </table>
-            <div className="row my-4">
+            <div className="row row-cols-1 row-cols-md-3 my-4">
               <div className="col">
                 <ul className="client-category">
                   <li className="mb-2">
-                    <input type="checkbox" id="fine-silver" name="fine-silver" />
-                    <label for="fine-silver">Fine Silver (99%)</label>
+                    <input type="checkbox" id="fine-silver" name="fine-silver" disabled />
+                    <label htmlFor="fine-silver">Fine Silver (99%)</label>
                   </li>
                   <li className="mb-2">
-                    <input type="checkbox" id="24K" name="24K" />
-                    <label for="24K">24K Gold (99%)</label>
+                    <input type="checkbox" id="24K" name="24K" disabled />
+                    <label htmlFor="24K">24K Gold (99%)</label>
                   </li>
                   <li className="mb-2">
-                    <input type="checkbox" id="plantium" name="plantium" />
-                    <label for="plantium">Plantium (99%)</label>
+                    <input type="checkbox" id="plantium" name="plantium" disabled />
+                    <label htmlFor="plantium">Plantium (99%)</label>
                   </li>
                   <li className="">
-                    <input type="checkbox" id="other" name="other" />
-                    <label for="other">Other</label>
+                    <input type="checkbox" id="other" name="other" disabled />
+                    <label htmlFor="other">Other</label>
                   </li>
                 </ul>
               </div>
-              <div className="col">
+              <div className="col mb-2 mb-md-0">
                 <ul className="list-group text-start">
                   <li className="list-group-item">
                     <div className="row">
-                      <label className="col-3">Size/Length:</label>
-                      <div className="col-9">
-                        <input type="text" className="client-input w-100" name="size" />
+                      <label className="col-4" htmlFor="size">
+                        Size/Length:
+                      </label>
+                      <div className="col-8">
+                        <input type="text" className="client-input w-100" name="size" id="size" disabled />
                       </div>
                     </div>
                   </li>
                   <li className="list-group-item">
                     <div className="row">
-                      <label className="col-3">Width:</label>
-                      <div className="col-9">
-                        <input type="text" className="client-input w-100" name="width" />
+                      <label className="col-4" htmlFor="width">
+                        Width:
+                      </label>
+                      <div className="col-8">
+                        <input type="text" className="client-input w-100" name="width" id="width" disabled />
                       </div>
                     </div>
                   </li>
                   <li className="list-group-item">
                     <div className="row">
-                      <label className="col-3">Weight:</label>
-                      <div className="col-9">
-                        <input type="text" className="client-input w-100" name="weight" />
+                      <label className="col-4" htmlFor="weight">
+                        Weight:
+                      </label>
+                      <div className="col-8">
+                        <input type="text" className="client-input w-100" name="weight" id="weight" disabled />
                       </div>
                     </div>
                   </li>
                   <li className="list-group-item">
                     <div className="row">
-                      <label className="col-3">Clasp:</label>
-                      <div className="col-9">
-                        <input type="text" className="client-input w-100" name="clasp" />
+                      <label className="col-4" htmlFor="clasp">
+                        Clasp:
+                      </label>
+                      <div className="col-8">
+                        <input type="text" className="client-input w-100" name="clasp" id="clasp" disabled />
                       </div>
                     </div>
                   </li>
@@ -152,14 +168,16 @@ const ClientPage = () => {
                   <tbody>
                     <tr>
                       <td className="client-gemstone">
-                        <textarea className="w-100 h-100 client-input" name="gemstone"></textarea>
+                        <textarea className="w-100 h-100 client-input" name="gemstone" disabled></textarea>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-            <img src={`https://renjord.s3.us-east-2.amazonaws.com/${data.photo}`} className="img-fluid" alt={data.photo} />
+            <div className="text-center">
+              <img src={`https://renjord.s3.us-east-2.amazonaws.com/${data.photo}`} className="img-fluid" alt={data.photo} />
+            </div>
           </div>
         </div>
       )}

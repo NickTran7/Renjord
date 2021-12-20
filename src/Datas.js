@@ -13,8 +13,8 @@ const Datas = () => {
       {isPending && <div>Loading...</div>}
       {data && (
         <div>
-          <table className="table table-bordered text-center w-100">
-            <thead>
+          <table className="table table-bordered  w-100">
+            <thead className="text-center">
               <tr>
                 <th>ProductId</th>
                 <th>Name</th>
@@ -22,8 +22,8 @@ const Datas = () => {
               </tr>
             </thead>
             <tbody>
-              {data.products.map((items) => (
-                <tr>
+              {data.products.map((items, index) => (
+                <tr key={index}>
                   <td>
                     <Link to={`/datas/${items.productId}`}>{items.productId}</Link>
                   </td>

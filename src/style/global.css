@@ -3,3 +3,12 @@
   border: none;
   box-shadow: 0 0 40px rgba(8, 21, 66, 0.05);
 }
+.navbar-toggler {
+  outline: none !important;
+  border: 0 !important;
+  text-align: center;
+}
+input:disabled,
+textarea:disabled {
+  background: none;
+}
