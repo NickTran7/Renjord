@@ -19,6 +19,11 @@ img {
   height: auto;
   width: auto;
 }
+.img-fluid {
+  max-width: 400px;
+  height: auto;
+  width: auto;
+}
 .navbar {
   padding: 20px;
   display: flex;
