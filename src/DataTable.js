@@ -7,7 +7,7 @@ import { useParams } from "react-router";
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-const DataDetail = () => {
+const DataTable = () => {
   const { id } = useParams();
   const history = useHistory();
   const [linkPhoto, setLinkPhoto] = useState("");
@@ -94,12 +94,13 @@ const DataDetail = () => {
       {data && (
         <div>
           <div key={data.photo}>
-            <h3>ProductID: {data.productId}</h3>
+            <p>
+              ProductID:<b> {data.productId}</b>
+            </p>
             {data.photo && (
               //? If data.photo is true, load string from data.photo + photo
               //* data.photo = name of img ie catphoto.jpeg
               <div>
-                {data.photo}
                 <img
                   src={`https://renjord.s3.us-east-2.amazonaws.com/${data.photo}`}
                 />
@@ -135,4 +136,4 @@ const DataDetail = () => {
     </div>
   );
 };
-export default DataDetail;
+export default DataTable;

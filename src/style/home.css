@@ -1,0 +1,61 @@
+/* You can remove these code below*/
+:root {
+  --primary: #f1356d;
+  --font: "Poppins", sans-serif;
+  --gradient: linear-gradient(40deg, #ff6ec4, #7873f5);
+  --shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+}
+* {
+  box-sizing: border-box;
+}
+/* input,
+button,
+textarea {
+  border: 0;
+  outline: none;
+} */
+/* Main code */
+
+.subscribe-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 15px;
+}
+.subscribe-form-input {
+  flex: 1;
+  width: 100%;
+  outline: none;
+  padding: 15px 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  transition: all 0.2s linear;
+}
+.subscribe-form-input:focus {
+  border-color: var(--primary);
+}
+.subscribe-form-input:focus + .subscribe-form-button {
+  background-color: var(--primary);
+}
+.subscribe-form-button {
+  padding: 5px 15px;
+  background-color: #f1356d;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: all 0.2s linear;
+  position: relative;
+  top: 50%;
+  right: -18px;
+  border: 0;
+  outline: none;
+}
+
+.home .home-form {
+  margin-top: 20em;
+}

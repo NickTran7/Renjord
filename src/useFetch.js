@@ -9,14 +9,17 @@ const useFetch = (url) => {
     const abortCont = new AbortController();
 
     setTimeout(() => {
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      // var myHeaders = new Headers();
+      // myHeaders.append("Content-Type", "application/json");
+      // myHeaders.append("Access-Control-Allow-Origin", "http://renjord.s3-website.us-east-2.amazonaws.com");
       fetch(url, {
         signal: abortCont.signal,
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
         .then((res) => {
+          console.log(res);
           if (!res.ok) {
             // error coming back from server
             throw Error("could not fetch the data for that resource");
